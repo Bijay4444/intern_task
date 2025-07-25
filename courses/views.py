@@ -10,13 +10,14 @@ class LessonPagination(PageNumberPagination):
     max_page_size = 20
 
 
-class LessonListAPIView(generics.ListAPIView):
+class LessonListCreateAPIView(generics.ListCreateAPIView):
     """
     API view that supports search by title and paginates the result (5 per page).
     Use Django REST Framework's SearchFilter and PageNumberPagination.
 
     Search by adding ?search=<query> to the URL
     Navigate pages with ?page=<page_number>
+    Also supports POST to create new lessons.
     """
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
